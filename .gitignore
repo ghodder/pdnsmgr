@@ -1,7 +1,2 @@
 /bootstrap/compiled.php
-/bootstrap/start.php
-/config/local/app.php
-/config/production/app.php
-!.env.example
-.env.*
 .env
