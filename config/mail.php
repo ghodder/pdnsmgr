@@ -54,7 +54,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => null, 'name' => null],
+	'from' => [env('MAIL_FROMADDR', null), env('MAIL_FROMNAME', null)],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
 	|
 	*/
 
-	'encryption' => 'tls',
+	'encryption' => env('MAIL_ENCRYPT', 'tls'),
 
 	/*
 	|--------------------------------------------------------------------------
