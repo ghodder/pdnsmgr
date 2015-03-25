@@ -14,9 +14,11 @@ return [
 	|
 	*/
 
+	// key: key-447isa0s7f7j8po-4ws-yo5hf1uisjv3
+
 	'mailgun' => [
-		'domain' => '',
-		'secret' => '',
+		'domain' => env('MAILGUN_DOMAIN', null),
+		'secret' => env('MAILGUN_KEY', null),
 	],
 
 	'mandrill' => [
