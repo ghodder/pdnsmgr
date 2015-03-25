@@ -36,7 +36,8 @@
 				<ul class="nav navbar-nav">
 					@if (Auth::check())
 						<li><a href="{{ url('/') }}">Home</a></li>
-						<li><a href="{{ url('/tools') }}">DNS Tools</a></li>
+						<li><a href="{{ url('/dns') }}">DNS Tools</a></li>
+						<li><a href="{{ url('/ipgeo') }}">IP Location</a></li>
 					@endif
 				</ul>
 
