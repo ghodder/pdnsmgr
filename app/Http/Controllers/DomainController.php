@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class DomainsController extends Controller {
+class DomainController extends Controller {
 
 	/**
 	 * Functions check if the logged in user owns the domain(s) before proceeding
