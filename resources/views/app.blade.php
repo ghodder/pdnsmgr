@@ -7,6 +7,7 @@
 	<title>PowerDNS Manager</title>
 
 	<link href="{{ asset('/css/spacelab.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/loading-bar.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/pdnsmgr.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
@@ -64,7 +65,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <script src="/js/pdnsmgr.js"></script>
+	<script src="{{ asset('/js/loading-bar.min.js') }}"></script>
+        <script src="{{ asset('/js/pdnsmgr.js') }}"></script>
 
 </body>
 </html>
