@@ -30,22 +30,22 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">PowerDNS Manager</a>
+				<a class="navbar-brand" href="/#/">PowerDNS Manager</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					@if (Auth::check())
-						<li><a href="{{ url('/') }}">Home</a></li>
-						<li><a href="{{ url('/dns') }}">DNS Tools</a></li>
-						<li><a href="{{ url('/ipgeo') }}">IP Location</a></li>
+						<li><a href="{{ url('/#/#') }}">Home</a></li>
+						<li><a href="{{ url('/#/dns') }}">DNS Tools</a></li>
+						<li><a href="{{ url('/#/ipgeo') }}">IP Location</a></li>
 					@endif
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					@if(Auth::check())
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li class="disabled"><a href="">Profile</a></li>
 								<li class="divider"></li>
@@ -66,7 +66,9 @@
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="{{ asset('/js/loading-bar.min.js') }}"></script>
-        <script src="{{ asset('/js/pdnsmgr.js') }}"></script>
+        <script src="{{ asset('/js/pdnsapp.js') }}"></script>
+	<script src="{{ asset('/js/pdnscontrollers.js') }}"></script>
+	<script src="{{ asset('/js/pdnsservices.js') }}"></script>
 
 </body>
 </html>
