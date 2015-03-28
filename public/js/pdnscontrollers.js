@@ -18,7 +18,13 @@ pdnsapp.controller('DomainController',
 
 pdnsapp.controller('HomeController',
         function HomeController($scope, Data) {
-                return 'Home controller';
+		function parseDomains(data) {
+			$scope.domains = data;
+		}
+
+		$scope.newDomain = { domain: '' };
+
+		Data.getDomains().success(parseDomains);
         }
 );
 

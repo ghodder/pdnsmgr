@@ -30,13 +30,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/#/">PowerDNS Manager</a>
+				<span class="navbar-brand">PowerDNS Manager</span>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					@if (Auth::check())
-						<li><a href="{{ url('/#/#') }}">Home</a></li>
+						<li><a href="{{ url('/#/#') }}">Domains</a></li>
 						<li><a href="{{ url('/#/dns') }}">DNS Tools</a></li>
 						<li><a href="{{ url('/#/ipgeo') }}">IP Location</a></li>
 					@endif
@@ -44,6 +44,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					@if(Auth::check())
+						<li><a href="{{ url('/#/admin') }}">Admin</a></li>
 						<li class="dropdown">
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">

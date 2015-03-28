@@ -15,8 +15,8 @@ Route::get('/', 'HomeController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-	'domain' => 'DomainController',
-	'dns' => 'DnsController',
-	'ipgeo' => 'IpgeoController',
-]);
+	'password' => 'Auth\PasswordController']);
+
+Route::resource('domain', 'DomainController');
+Route::resource('dns', 'DnsController');
+Route::resource('ipgeo', 'IpgeoController');

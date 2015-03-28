@@ -1,106 +1,107 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Auth;
+use App\Domain;
 
-use Illuminate\Http\Request;
+#use App\Http\Requests;
+#use App\Http\Controllers\Controller;
+
+#use Illuminate\Http\Request;
+#use Illuminate\Http\Response;
 
 class DomainController extends Controller {
 
 	/**
-	 * Functions check if the logged in user owns the domain(s) before proceeding
+	 * Functions check if the logged in user owns the domain(s)
 	 *
 	 * Admin users can make changes to any domain
 	 */
 
+	public function __construct() {
 
-        /**
-         * Display list of all domains
+		$this->middleware('auth');
+	}
+
+	/**
+         * Display list of all domains user has access to
          *
          * @return Response
          */
-        public function getList()
-        {
-                //
-        }
+	public function index() {
+		$domains = Domain::where('user_id', '=', Auth::user()->id)->orderBy('domain')->get();
+
+		return $domains;
+	}
 
 	/**
-	 * Display specific domain details 
+	 * Display details for single domain
+	 *
+	 * @param  int $id
+	 * @return Response
+	 */
+	public function show($id) {
+		$domain = Domain::where('user_id', '=', Auth::user()->id)->where('id', '=', $id)->get();
+
+		if ($domain->count() == 0) {
+			return response('Not found', 404);
+		}
+	
+		return $domain;
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id) {
+		if (! Input::has('domain')) {
+			return response('Required fields missing from request.', 400);
+		}
+
+		$input = Input::all();
+		$domain = Domain::find($id);
+
+		$domain->user_id = Auth::user()->id;
+		$domain->domain = Input::get('domain');
+		$domain->save();
+
+		return $domain;
+	}
+
+	/**
+	 * Create new domain and submit to PDNS REST API
 	 *
 	 * @return Response
 	 */
-	public function getDomain($id)
-	{
-		//
-	}
+	public function store() {
+		if (! Input::has('domain')) {
+			return response('Required fields missing from request.', 400);
+		}
 
-	/**
-	 * Create new domain in PDNSMgr domains table and submit to PDNS REST API
-	 *
-	 * @return Response
-	 */
-	public function putDomain()
-	{
-		//
-	}
+		$domain = new Domain;
+		$domain->user_id = Auth::user()->id;
+		$domain->domain = Input::get('domain');
+		$domain->save();
 
-        /**
-         * Update domain in PDNSMgr domains table and submit to PDNS REST API
-         *
-         * @return Response
-         */
-        public function postDomain()
-        {
-                //
-        }
-
-        /**
-         * Delete the specified domain from PDNSMgr domains table and PDNS REST API
-         *
-         * @return Response
-         */
-        public function deleteDomain()
-        {
-                //
-        }
-
-        /**
-         * Return domain records via PDNS REST API
-         *
-         * @return Response
-         */
-        public function getRecords()
-        {
-                //
-        }
-
-	/**
-	 * Create domain record via PDNS REST API
-	 * 
-	 * @return Response
-	public function putRecord()
-	{
-		//
+		return $domain;
 	}
 
         /**
-         * Update domain record via PDNS REST API
+         * Delete specified domain via PDNS REST API
          *
+	 * @param  int $id
          * @return Response
          */
-	public function postRecord()
-	{
-		//
-	}
+	public function destroy($id) {
+		$domain = Domain::where('user_id', '=', Auth::user()->id)->where('id', '=', $id)->delete();
 
-        /**
-         * Delete record from the specified domain via PDNS REST API
-         *
-         * @return Response
-         */
-	public function deleteRecord()
-	{
-		//
+		if ($domain->count() == 0) {
+			return response('Not found', 404);
+		}
+
+		return $domain;	
 	}
 
 }

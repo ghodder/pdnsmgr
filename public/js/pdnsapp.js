@@ -1,9 +1,8 @@
 var pdnsapp = angular.module('pdnsApp', [
    'ngRoute',
    'angular-loading-bar'
-]);
-
-pdnsapp.config(['$routeProvider',
+])
+.config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.
 			when('/', {
@@ -31,9 +30,11 @@ pdnsapp.config(['$routeProvider',
 	function($httpProvider) {
 		$httpProvider.defaults.withCredentials = true;
 	}
-]);
-
-pdnsapp.factory('Data', function Data($http) {
-	return 'Here is some data';
+])
+.factory('Data', function Data($http) {
+	return {
+		getDomains: function getDomains() { return $http.get('/domain'); },
+		getDomain:  function getDomain(id) { return $http.get('/domain/' + id); }
+	}
 });
 

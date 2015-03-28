@@ -33,7 +33,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function domains()
 	{
-		return $this->hasMany('App\Domains');
+		return $this->hasMany('App\Domain');
 	}
 
 }
