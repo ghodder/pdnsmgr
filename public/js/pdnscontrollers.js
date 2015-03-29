@@ -40,7 +40,7 @@ pdnsapp.controller('HomeController',
 		}
 
 		function removeDomainError(data) {
-			console.log('Error deleting domain: ' + data);
+			console.log('removeDomain(): Error removing ' + data);
 		}
 
                 $scope.removeDomain = function removeDomain(id) {
