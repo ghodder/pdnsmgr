@@ -4,12 +4,6 @@ use Auth;
 use App\User;
 use App\Domain;
 
-#use App\Http\Requests;
-#use App\Http\Controllers\Controller;
-
-#use Illuminate\Http\Request;
-#use Illuminate\Http\Response;
-
 class DomainController extends Controller {
 
 	/**
@@ -101,6 +95,11 @@ class DomainController extends Controller {
          */
 	public function destroy($id) {
 		$domain = Domain::where('user_id', '=', Auth::user()->id)->where('id', '=', $id)->delete();
+		
+		if ($domain !== 1) {
+			// Domain could not be deleted, either it didn't exist or user did not have permission
+			return response('Not found', 404);
+		}
 
 		return $domain;	
 	}

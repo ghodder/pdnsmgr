@@ -17,6 +17,7 @@ pdnsapp.controller('HomeController',
 		}
 
 		$scope.newDomain = { domain: '' };
+		$scope.removeDomain = null;
 
 		$scope.refreshDomains = function refreshDomains() {
 			$scope.domains = null;
@@ -27,13 +28,13 @@ pdnsapp.controller('HomeController',
 
 		function removeDomainSuccess(data) {
 			var i = $scope.domains.length;
-			console.log('Response from server: ' + data);
 
 			while (i--) {
 				console.log('removeDomainSuccess(): Checking ' + $scope.domains[i].domain);
-				if ($scope.domains[i].id == data) {
+				if ($scope.domains[i].id == $scope.removeDomain) {
 					console.log('removeDomainSuccess(): Removing ' + $scope.domains[i].domain);
 					$scope.domains.splice(i, 1);
+					break;
 				}
 			}
 		}
@@ -48,6 +49,8 @@ pdnsapp.controller('HomeController',
 			while (i--) {
 				if ($scope.domains[i].id == id) {
                				if (confirm('Are you sure you wish to delete ' + $scope.domains[i].domain + '?')) {
+						$scope.removeDomain = id;
+						console.log('removeDomain(): Removing domain ' + $scope.domains[i].domain);
 		                                Data.removeDomain(id).success(removeDomainSuccess).error(removeDomainError);
 					}
 				}
