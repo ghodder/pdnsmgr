@@ -13,10 +13,6 @@ var pdnsapp = angular.module('pdnsApp', [
 				templateUrl: '/views/dnshome.html',
 				controller: 'DnsController'
 			}).
-			when('/domain', {
-				templateUrl: '/views/domainhome.html',
-				controller: 'DomainController'
-			}).
 			when('/ipgeo', {
 				templateUrl: '/views/ipgeohome.html',
 				controller: 'IpgeoController'
@@ -34,7 +30,8 @@ var pdnsapp = angular.module('pdnsApp', [
 .factory('Data', function Data($http) {
 	return {
 		getDomains: function getDomains() { return $http.get('/domain'); },
-		getDomain:  function getDomain(id) { return $http.get('/domain/' + id); }
+		getDomain:  function getDomain(id) { return $http.get('/domain/' + id); },
+		removeDomain: function removeDomain(id) { return $http.delete('/domain/' + id); }
 	}
 });
 

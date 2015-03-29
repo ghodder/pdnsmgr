@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Auth;
+use App\User;
 use App\Domain;
 
 #use App\Http\Requests;
@@ -28,7 +29,11 @@ class DomainController extends Controller {
          * @return Response
          */
 	public function index() {
-		$domains = Domain::where('user_id', '=', Auth::user()->id)->orderBy('domain')->get();
+		$domains = User::find(Auth::user()->id)->domains;
+
+		if ($domains->count() == 0) {
+			return response('Not found', 404);
+		}
 
 		return $domains;
 	}
@@ -96,10 +101,6 @@ class DomainController extends Controller {
          */
 	public function destroy($id) {
 		$domain = Domain::where('user_id', '=', Auth::user()->id)->where('id', '=', $id)->delete();
-
-		if ($domain->count() == 0) {
-			return response('Not found', 404);
-		}
 
 		return $domain;	
 	}

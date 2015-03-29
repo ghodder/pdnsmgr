@@ -2,3 +2,6 @@ body {
 	padding-top: 70px;
 }
 
+#loading-bar .bar, #loading-bar-spinner {
+	margin-top: 50px;
+}

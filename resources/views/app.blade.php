@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>PowerDNS Manager</title>
 
+	<!-- CSS -->
 	<link href="{{ asset('/css/spacelab.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/loading-bar.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/pdnsmgr.css') }}" rel="stylesheet">
@@ -37,8 +38,8 @@
 				<ul class="nav navbar-nav">
 					@if (Auth::check())
 						<li><a href="{{ url('/#/#') }}">Domains</a></li>
-						<li><a href="{{ url('/#/dns') }}">DNS Tools</a></li>
-						<li><a href="{{ url('/#/ipgeo') }}">IP Location</a></li>
+						<!-- <li><a href="{{ url('/#/dns') }}">DNS Tools</a></li> -->
+						<!-- <li><a href="{{ url('/#/ipgeo') }}">IP Location</a></li> -->
 					@endif
 				</ul>
 
@@ -64,12 +65,12 @@
         <!-- Scripts -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script src="{{ asset('/js/loading-bar.min.js') }}"></script>
+        <script src="{{ asset('/js/loading-bar.min.js') }}"></script>
         <script src="{{ asset('/js/pdnsapp.js') }}"></script>
-	<script src="{{ asset('/js/pdnscontrollers.js') }}"></script>
-	<script src="{{ asset('/js/pdnsservices.js') }}"></script>
+        <script src="{{ asset('/js/pdnscontrollers.js') }}"></script>
+        <script src="{{ asset('/js/pdnsservices.js') }}"></script>
 
 </body>
 </html>
